@@ -1,0 +1,16 @@
+{
+  "name": "chiefbot",
+  "version": "0.0.1",
+  "description": "Bot dedication to a wonderful overlor",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Frosti Grétarsson",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/opus": "^0.1.0",
+    "discord.js": "github:discordjs/discord.js",
+    "winston": "^3.2.1"
+  }
+}
