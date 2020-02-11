@@ -72,25 +72,25 @@ bot.on('message', function (msg) {
         if (args[0] == "chief") {
             switch (args[1]) {
                 case "drunk":
-                    playAudio(msg, "./audio/chief_drunk.mp3");   
+                    playAudio(msg, __dirname + "/audio/chief_drunk.mp3");   
                     break;
                 case "kitty":
-                    playAudio(msg, "./audio/chief_meow.mp3");
+                    playAudio(msg, __dirname + "/audio/chief_meow.mp3");
                     break;
                 case "wait":
-                    playAudio(msg, "./audio/chief_wait.mp3");
+                    playAudio(msg, __dirname + "/audio/chief_wait.mp3");
                     break;
                 case "sad":
-                    playAudio(msg, "./audio/chief_sad.mp3");
+                    playAudio(msg, __dirname + "/audio/chief_sad.mp3");
                     break;
                 case "shame":
-                    playAudio(msg, "./audio/chief_shame.mp3");
+                    playAudio(msg, __dirname + "/audio/chief_shame.mp3");
                     break;
                 case "cheeky":
-                    playAudio(msg, "./audio/chief_cheeky.mp3");
+                    playAudio(msg, __dirname + "/audio/chief_cheeky.mp3");
                     break;
                 case "lol":
-                    playAudio(msg, "./audio/chief_lol.mp3");
+                    playAudio(msg, __dirname + "/audio/chief_lol.mp3");
                     break;
                 case "join":
                     joinVoiceChannel(msg);
@@ -108,19 +108,19 @@ bot.on('message', function (msg) {
         } else if (args[0] == "gatsby") {
             switch (args[1]) {
                 case "noodle":
-                    playAudio(msg, "./audio/gatsby_wetnoodle.mp3");
+                    playAudio(msg, __dirname + "/audio/gatsby_wetnoodle.mp3");
                     break;
             }
         } else if (args[0] == "clazzy") {
             switch (args[1]) {
                 case "happy":
-                    playAudio(msg, "./audio/clazzy_ringtone.mp3");
+                    playAudio(msg, __dirname + "/audio/clazzy_ringtone.mp3");
                     break;
             }
         } else if (args[0] == "kenny") {
             switch (args[1]) {
                 case "whee":
-                    playAudio(msg, "./audio/kenny_excited.mp3");
+                    playAudio(msg, __dirname + "/audio/kenny_excited.mp3");
                     break;
             }
         }
@@ -132,6 +132,12 @@ bot.login(auth.token);
 
 
 process.on('SIGINT', () => {
-    bot._currentConnection.on("disconnect", () => {bot.destroy()});
-    if(bot._isConnected) bot._currentConnection.disconnect();
+    console.log();
+    if(bot._isConnected) {
+        bot._currentConnection.on("disconnect", () => {bot.destroy()});
+        bot._currentConnection.disconnect();
+    } else {
+        bot.destroy();
+    }
+
 });
